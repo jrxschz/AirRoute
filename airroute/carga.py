@@ -67,12 +67,3 @@ def cargar_rutas(ruta_fichero, aeropuertos):
 
     print(f"Rutas cargadas: {len(rutas)} | descartadas: {descartadas}")
     return rutas
-
-
-sda
-sd
-as
-d
-as
-d
-sad
