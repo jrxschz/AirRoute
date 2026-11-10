@@ -1,9 +1,13 @@
-def quicksort_aeropuertos(lista): # Ordena la lista de objetos Aeropuerto por su atributo 'id' de menor a mayor.
-    
+# airroute/algoritmos.py
+
+def quicksort_aeropuertos(lista):
+    """
+    Ordena la lista de objetos Aeropuerto por su atributo 'id' de menor a mayor.
+    Sigue el esquema del Tema 1 (diapositiva 64): menores, iguales y mayores.
+    """
     if len(lista) <= 1:
         return lista
 
-    # Se elige un pivote en una psoción fija, como por ejemplo, el del medio.
     pivote = lista[len(lista) // 2]
     id_pivote = pivote.id
 
@@ -19,39 +23,36 @@ def quicksort_aeropuertos(lista): # Ordena la lista de objetos Aeropuerto por su
         else:
             mayores.append(aeropuerto)
 
-    # Recursión en cascada y reconstrucción de la lista final
     return quicksort_aeropuertos(menores) + iguales + quicksort_aeropuertos(mayores)
 
 
-def busqueda_interpolacion(a, x): # Busca un aeropuerto cuyo ID sea 'x' en la lista ordenada 'a'. Usa la fórmula:pos = low + ((x - a[low]) / (a[high] - a[low])) * (high - low)
-    
+def busqueda_interpolacion(a, x):
+    """
+    Busca un aeropuerto cuyo ID sea 'x' en la lista ordenada 'a'.
+    Fórmula Tema 1 (diapositiva 43):
+    pos = low + ((x - a[low]) / (a[high] - a[low])) * (high - low)
+    """
     if len(a) == 0:
         return None
 
     low = 0
     high = len(a) - 1
 
-    # Paso 1: Verifica que x está dentro del rango [a[low], a[high]]
     while low <= high and x >= a[low].id and x <= a[high].id:
-
         if low == high:
             if a[low].id == x:
                 return a[low]
             return None
-
 
         if a[high].id == a[low].id:
             if a[low].id == x:
                 return a[low]
             return None
 
-        # Paso 2: Calcula la posición estimada usando la fórmula de interpolación
         pos = low + int(((x - a[low].id) / (a[high].id - a[low].id)) * (high - low))
 
-        # Paso 3: Compara el elemento buscado con el de la posición estimada
         if a[pos].id == x:
             return a[pos]
-        # Paso 4: Ajusta los límites hacia la sublista derecha o izquierda
         elif a[pos].id < x:
             low = pos + 1
         else:
@@ -60,14 +61,16 @@ def busqueda_interpolacion(a, x): # Busca un aeropuerto cuyo ID sea 'x' en la li
     return None
 
 
-def quicksort_rutas(lista_rutas, criterio): # Ordena las rutas encontradas según el criterio elegido: 'precio', 'duracion' o 'distancia' o 'escalas'.
-    # Caso base: 0 o 1 elemento
+def quicksort_rutas(lista_rutas, criterio="precio"):
+    """
+    Ordena las rutas encontradas según el criterio elegido:
+    'precio', 'duracion', 'distancia' o 'escalas'.
+    """
     if len(lista_rutas) <= 1:
         return lista_rutas
 
     pivote = lista_rutas[len(lista_rutas) // 2]
 
-    # Se saca el valor numérico del pivote según el criterio elegido
     if criterio == "precio":
         valor_pivote = pivote.precio
     elif criterio == "duracion":
