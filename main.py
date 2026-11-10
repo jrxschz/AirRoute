@@ -1,5 +1,5 @@
 from pathlib import Path
-
+import time
 from airroute.carga import cargar_aeropuertos, cargar_rutas
 from airroute.algoritmos import quicksort_aeropuertos, busqueda_interpolacion, quicksort_rutas
 from airroute.grafo import GrafoConPesos
@@ -36,8 +36,8 @@ while True:
             print("No se encontró ese aeropuerto.")
 
     elif opcion == "3":
-        print("Salido de la interfaz.")
-        break
-
+        for i in range(3):
+            print("Saliendo de la interfaz...")
+        
     else:
         print("Opción no válida.")
