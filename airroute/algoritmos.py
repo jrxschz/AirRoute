@@ -1,10 +1,5 @@
-# airroute/algoritmos.py
 
 def quicksort_aeropuertos(lista):
-    """
-    Ordena la lista de objetos Aeropuerto por su atributo 'id' de menor a mayor.
-    Sigue el esquema del Tema 1 (diapositiva 64): menores, iguales y mayores.
-    """
     if len(lista) <= 1:
         return lista
 
@@ -27,11 +22,6 @@ def quicksort_aeropuertos(lista):
 
 
 def busqueda_interpolacion(a, x):
-    """
-    Busca un aeropuerto cuyo ID sea 'x' en la lista ordenada 'a'.
-    Fórmula Tema 1 (diapositiva 43):
-    pos = low + ((x - a[low]) / (a[high] - a[low])) * (high - low)
-    """
     if len(a) == 0:
         return None
 
@@ -62,10 +52,6 @@ def busqueda_interpolacion(a, x):
 
 
 def quicksort_rutas(lista_rutas, criterio="precio"):
-    """
-    Ordena las rutas encontradas según el criterio elegido:
-    'precio', 'duracion', 'distancia' o 'escalas'.
-    """
     if len(lista_rutas) <= 1:
         return lista_rutas
 

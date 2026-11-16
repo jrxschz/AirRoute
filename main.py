@@ -1,4 +1,3 @@
-# main.py
 from pathlib import Path
 import time
 from airroute.carga import cargar_aeropuertos, cargar_rutas
@@ -12,20 +11,16 @@ print("Cargando base de datos OpenFlights...")
 aeropuertos = cargar_aeropuertos(DATA / "airports.dat")
 rutas = cargar_rutas(DATA / "routes.dat", aeropuertos)
 
-# 1. Ordenar aeropuertos por ID con QuickSort para poder usar Búsqueda por Interpolación
 print("Ordenando aeropuertos con QuickSort para habilitar interpolación...")
 aeropuertos_ordenados = quicksort_aeropuertos(aeropuertos)
 
-# 2. Crear y poblar el Grafo dirigido con pesos
 print("Construyendo el Grafo dirigido con pesos...")
 grafo = GrafoConPesos()
 grafo.cargar_datos(aeropuertos_ordenados, rutas)
 
-# 3. Inicializar la Lista Enlazada para el historial de búsquedas
 historial = ListaEnlazada()
 print("¡Sistema listo!\n")
 
-# 4. Menú principal interactivo
 while True:
     print("\n==========================================")
     print("         AIRROUTE MANAGER - MENÚ          ")
@@ -87,7 +82,6 @@ while True:
             print("No se ha encontrado ninguna combinación de vuelos posible.")
             continue
 
-        # Ordenar resultados con QuickSort
         trayectos_ordenados = quicksort_rutas(trayectos, criterio)
 
         print(f"\nSe han encontrado {len(trayectos_ordenados)} rutas. Mostrando las 5 mejores por {criterio}:")
